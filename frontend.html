@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Mars-Rovers</title>
+</head>
+<body>
+    <header class="w3-container">
+            <nav class="w3-gray navbar">
+                <div class="navbar-left">
+                    <img class="logo" src="img/rover-logo.png" alt="rover-logo">
+                    <h1 id="title">Mars Rover</h1>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item w3-bar-item">
+                        <a class="nav-link" href="#overview">Übersicht</a>
+                    </li>
+                    <li class="nav-item w3-bar-item">
+                        <a class="nav-link" href="#rover-drawing">Animation</a>
+                    </li>
+                    <li class="nav-item w3-bar-item">
+                        <a class="nav-link" href="#image-search">Bildersuche</a>
+                    </li>
+                </ul>
+                <div id="hamburger-menu">
+                    <span class="hamburger-item"></span>
+                    <span class="hamburger-item"></span>
+                    <span class="hamburger-item"></span>
+                </div>
+            </nav>
+    </header>
+    <main>
+        <div class="w3-container infos-title-container">
+            <h2 id="overview"><b>Übersicht</b></h2>
+            <p>
+                Es gibt heute noch zwei aktive Marsrover der NASA, Perseverance und Curiosity.
+                Auf dieser Webseite kann man nach Bildern, der Kameras, der beiden Mars Rovers suchen.
+                Dies funktioniert über eine der API's der NASA, die
+                <a class="w3-hover-dark-gray" href="https://data.nasa.gov/Space-Science/Mars-Rover-Photos-API/929k-jizu/about_data">Mars Rover Photos API</a>.
+                Es werden Informationen über die beiden Mars Rovers Perseverance und Curiosity aufgelistet. Weiter gibt es eine Grafik die einen Mars Rover darstellt, mit einer Animation.
+            </p>
+        </div>
+        <div class="infos-container w3-container">
+            <div class="info-container">
+                <h3 class="sub-title">Perseverance</h3>
+                <img class="rover-images" src="img/perseverance.jpg" alt="perseverance rover">
+                <ul class="w3-ul factsheet">
+                    <li class="factsheet-item">
+                        <b>Start: </b> 30. Juli 2020
+                    </li>
+                    <li class="factsheet-item">
+                        <b>Landung: </b> 18. Februar 2021
+                    </li>
+                    <li class="factsheet-item">
+                        <b>Ort: </b> Jezero-Krater auf dem Mars
+                    </li>
+                    <li class="factsheet-item">
+                        <b>Gewicht: </b> 1025 kg
+                    </li>
+                    <li class="factsheet-item">
+                        <b>Grösse: </b> 300 cm x 270 cm x 200 cm
+                    </li>
+                </ul>
+            </div>
+            <div class="info-container">
+                <h3 class="sub-title">Curiosity</h3>
+                <img class="rover-images" src="img/curiosity.jpg" alt="curiosity rover">
+                <ul class="w3-ul factsheet">
+                    <li class="factsheet-item">
+                        <b>Start: </b> 26. November 2011
+                    </li>
+                    <li class="factsheet-item">
+                        <b>Landung: </b> 06. August 2012
+                    </li>
+                    <li class="factsheet-item">
+                        <b>Ort: </b> Gale-Krater auf dem Mars
+                    </li>
+                    <li class="factsheet-item">
+                        <b>Gewicht: </b> 900 kg
+                    </li>
+                    <li class="factsheet-item">
+                        <b>Grösse: </b> 310 cm x 270 cm x 210 cm
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="rover-container w3-container">
+            <canvas id="rover-drawing" width="800" height="600"></canvas>
+        </div>
+        <div class="form-container w3-container">
+            <form id="image-search" class="request-form">
+                <h3>Bildersuche</h3>
+                <div class="w3-container">
+                    <label for="radio-button-selection">Mars Rover wählen:*</label>
+                    <div id="radio-button-selection">
+                        <label for="rover-select-perseverance">Perseverance</label>
+                        <input id="rover-select-perseverance" type="radio" name="rover-name" required>
+                        <label for="rover-select-curiosity">Curiosity</label>
+                        <input id="rover-select-curiosity" type="radio" name="rover-name" required>
+                        <p id="error-rover-selection" class="error w3-text-red"></p>
+                    </div>
+                </div>
+                <div class="w3-container date-container">
+                    <label id="date-label" for="date">Datum der Aufnahme*</label>
+                    <input class="w3-input" type="date" id="date" name="date" required>
+                    <p id="error-date" class="error w3-text-red"></p>
+                </div>
+                <div class="w3-container">
+                    <label for="camera">Eine Kamera spezifizieren: (Optional, siehe
+                        <a class="w3-hover-dark-gray" href="https://github.com/corincerami/mars-photo-api#cameras">mögliche Kameras</a>)
+                    </label>
+                    <input class="w3-input" type="text" id="camera" name="camera" placeholder="Beispiele Perseverance: NAVCAM_LEFT, SKYCAM, ...">
+                    <p id="error-camera" class="w3-text-red error"></p>
+                </div>
+                <div class="w3-container">
+                    <input class="w3-button send-button" type="button" value="Bild suchen" onclick="submitForm()">
+                </div>
+            </form>
+        </div>
+        <div class="w3-container result-container">
+            <p id="rover-active"></p>
+            <p id="total-photos"></p>
+            <p id="number-of-requests"></p>
+            <p id="number-of-photos"></p>
+            <img id="rover-photo" src="" alt="">
+        </div>
+    </main>
+    <script src="js/app.js"></script>
+</body>

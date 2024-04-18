@@ -1,0 +1,188 @@
+body {
+    background: slategray;
+    padding-bottom: 6rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-left {
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+    margin-right: 2rem;
+
+}
+
+.logo {
+    height: 5rem;
+    margin-top: 8px;
+    top: 50%;
+}
+
+.nav-item {
+    list-style: none;
+    margin-left: 4rem;
+    font-size: 32px;
+}
+
+.nav-link {
+    color: darkslategray;
+}
+
+.nav-link:hover {
+    color: darkblue;
+}
+
+.rover-images {
+    width: 95%;
+}
+
+.infos-container {
+    display: flex;
+    justify-content: center;
+}
+
+.infos-title-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.factsheet {
+    margin-top: 1rem;
+}
+
+.rover-container {
+    text-align: center;
+}
+
+.form-container {
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50rem;
+    border: 2px solid black;
+}
+
+input, button {
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.send-button {
+    float: right;
+    outline: 2px solid black;
+    background-color: azure;
+}
+
+#rover-select-perseverance {
+    margin-right: 2rem;
+}
+
+#error-rover-selection {
+    display: inline-block;
+    word-break: break-word;
+}
+
+p, li, label {
+    font-size: 18px;
+}
+
+.date-container {
+    padding-top: 15px;
+}
+
+.result-container {
+    margin-top: 2rem;
+    justify-content: center;
+    text-align: center;
+}
+
+#rover-photo {
+    max-width: 95%;
+}
+
+#hamburger-menu {
+    display: none;
+}
+
+.hamburger-item {
+    display: block;
+    width: 5rem;
+    height: 0.8rem;
+    margin: 1rem;
+    background-color: cadetblue;
+    box-shadow: 5px 5px 2px lightblue;
+}
+
+@media only screen and (max-width: 1024px) {
+    p, li, label {
+        font-size: 14px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+
+    .rover-images {
+        width: 100%;
+    }
+
+    #title {
+        display: none;
+    }
+
+    .nav-list {
+        position: absolute;
+        flex-direction: column;
+        background-color: #9e9e9e;
+        width: 50%;
+        text-align: center;
+        margin-top: 6.2rem;
+        padding-left: 0;
+        top: -50%;
+        transition: 0.4s;
+    }
+
+    .nav-item {
+        margin-left: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .nav-list.active {
+        top: 0;
+    }
+
+    .nav-item {
+        font-size: 22px;
+    }
+
+    .infos-container {
+        flex-direction: column;
+    }
+
+    .infos-title-container {
+        text-align: left;
+    }
+
+    #rover-drawing {
+        width: 100%;
+        height: 100%;
+    }
+
+    .form-container {
+        border: none;
+        width: 100%;
+    }
+
+    #hamburger-menu {
+        display: block;
+        cursor: pointer;
+    }
+}
